@@ -1,0 +1,74 @@
+<!-- SpendWise_app/templates/SpendWise_app/index.html -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>SpendWise</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'SpendWise_app/styles.css' %}">
+</head>
+
+<body>
+    <h1>Welcome to SpendWise!</h1>
+
+    <div class="main-container">
+        <!-- Left Column: Expense Submission and Budget Revisions -->
+        <div class="left-column">
+            <!-- Expense Submission Section -->
+            <div class="form-container">
+                <h2>Enter an expense:</h2>
+                <form method="post" action="{% url 'index' %}">
+                    {% csrf_token %}
+                    <label for="expense_name">Expense Name:</label>
+                    <input type="text" name="expense_name" required><br><br>
+
+                    <label for="expense_amount">Expense Amount:</label>
+                    <input type="number" name="expense_amount" required><br><br>
+
+                    <label for="category">Select a category:</label>
+                    <select name="category" required>
+                        <option value="Empty">--------</option>
+                        <option value="Savings">💰 Savings</option>
+                        <option value="Taxes">🏛️ Taxes</option>
+                        <option value="Food">🍔 Food</option>
+                        <option value="Home">🏠 Home</option>
+                        <option value="Work">💼 Work</option>
+                        <option value="Fun">🎉 Fun</option>
+                        <option value="Miscellaneous">💩 Miscellaneous</option>
+                    </select><br><br>
+
+                    <input type="submit" value="Submit Expense">
+                </form>
+            </div>
+
+            <!-- Budget Revisions Section -->
+            <div class="form-container">
+                <h2>Budget Revisions</h2>
+                <!-- Add Budget Form -->
+                <form method="post" action="{% url 'add_budget' %}">
+                    {% csrf_token %}
+                    <label for="budget_amount">Add to Budget:</label>
+                    <input type="number" name="budget_amount" required>
+                    <input type="submit" value="Add Budget">
+                </form>
+
+
+                <!-- Set New Budget Form -->
+                <form method="post" action="{% url 'set_budget' %}">
+                    {% csrf_token %}
+                    <label for="new_budget">Set New Budget:</label>
+                    <input type="number" name="new_budget" required>
+                    <input type="submit" value="Set Budget">
+                </form>
+            </div>
+        </div>
+
+        <!-- Right Column: Expense Summary -->
+        <div class="summary-container">
+            <h2>Expense Summary</h2>
+            {{ summary|safe }}
+        </div>
+    </div>
+    
+</body>
+</html>

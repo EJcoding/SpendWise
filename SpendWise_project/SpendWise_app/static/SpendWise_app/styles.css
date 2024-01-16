@@ -1,0 +1,44 @@
+/* SpendWise_app/static/SpendWise_app/styles.css */
+
+body {
+    background-color: beige;
+}
+
+h1 {
+    font-size: 50px;
+    font-family: 'Baskerville', 'Baskerville Old Face', 'Hoefler Text', Garamond, 'Times New Roman', serif;
+    color: olivedrab;
+    text-align: center;
+}
+
+.main-container {
+    display: flex;
+    justify-content: flex-start;
+    margin: 10px;
+}
+
+.left-column {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.form-container{
+    width: 80%;
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+.form-container form {
+    margin-bottom: 1px;
+}
+
+.form-container label {
+    margin-bottom: 5px;
+}
+
+.summary-container {
+    text-align: center;
+    width: 45%;
+    margin-left: 50px;
+}
